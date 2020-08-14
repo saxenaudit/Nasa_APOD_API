@@ -71,20 +71,21 @@
       <center><button><a id="dwnld" href="#">Download HD Image</a></button></center>
     </main>
     <script>
+//       fetch the data from nasa apod api (read about await & fetch from MDN docs)
       async function getImg() {
         base_url =
           "https://api.nasa.gov/planetary/apod?api_key=<put your api key here>";
         const response = await fetch(base_url);
-        const data = await response.json();
-        console.log(data);
-
+        const data = await response.json(); //convert response into json
+        console.log(data); //log the data
+// diplay data on frontend
         document.getElementById("date").textContent = "Date: " + data.date;
         document.getElementById("exp").textContent = data.explanation;
         document.getElementById("title").textContent = data.title;
         document.getElementById('bg').src = data.url;
         document.getElementById('dwnld').href = data.hdurl;
       }
-
+// function call
       getImg();
     </script>
   </body>
