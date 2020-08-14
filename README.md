@@ -13,3 +13,5 @@ Simpe WebApp implementation of NASA APOD API
 ALL set, host this website on any platform or open in local browser!
 
 ##### [DEMO](https://nasa-api.surge.sh/)
+
+![ASTRONOMY PICTURE OF THE DAY](https://github.com/saxenaudit/Nasa_APOD_API/raw/master/screensot.jpg)
