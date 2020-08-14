@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Uditanshu saxena" />
+    <meta name="theme-color" content="#faebd7" />
+    <title>NASA APOD API</title>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        font-family: monospace;
+        background-color: antiquewhite;
+        padding-bottom: 10px;
+      }
+      #bg {
+        height: 100%;
+        width: 100%;
+      }
+      .title {
+        text-align: center;
+      }
+
+      #title {
+        text-align: center;
+        font-weight: 700;
+        font-size: large;
+        color: gray;
+      }
+
+      #date {
+        font-weight: 500;
+        color: brown;
+      }
+
+      #exp {
+        font-weight: 500;
+        font-size: 16px;
+      }
+      #ale{
+        font-size: 18px;
+        padding: 5px 15px 0px 15px;
+        margin: 2px;
+      }
+      #title,
+      #date,
+      #exp{
+        margin: 2px;
+        padding: 5px 15px 5px 15px;
+      }
+
+      button, a{
+          border : 0px;
+          background-color:burlywood;
+          color:white;
+          padding:10px 12px 10px 12px;
+          text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="title">ASTRONOMY PICTURE OF THE DAY</h1>
+      <img src="" id="bg"></img>
+      <br />
+      <p id="title"></p>
+      <p id="date"></p>
+      <h4 id="ale">A little explanation -</h4>
+      <p id="exp"></p>
+      <center><button><a id="dwnld" href="#">Download HD Image</a></button></center>
+    </main>
+    <script>
+      async function getImg() {
+        base_url =
+          "https://api.nasa.gov/planetary/apod?api_key=<put your api key here>";
+        const response = await fetch(base_url);
+        const data = await response.json();
+        console.log(data);
+
+        document.getElementById("date").textContent = "Date: " + data.date;
+        document.getElementById("exp").textContent = data.explanation;
+        document.getElementById("title").textContent = data.title;
+        document.getElementById('bg').src = data.url;
+        document.getElementById('dwnld').href = data.hdurl;
+      }
+
+      getImg();
+    </script>
+  </body>
+</html>
